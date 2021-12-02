@@ -22,19 +22,19 @@ const MainRouter = () => {
         <div>
             <Menu />
             <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path="/" component={Home}/>
                 <Route path="/users" component={Users}/>
                 <Route path="/signup" component={Signup}/>
                 <Route path="/signin" component={Signin}/>
+                <PrivateRoute path="/user/edit/:userId" component={EditProfile}/>
+                <Route path="/user/:userId" component={Profile}/>
                 <Route path="/shops/all" component={Shops}/>
                 <Route path="/shops/:shopId" component={Shop}/>
-                <Route path="/user/:userId" component={Profile}/>
                 <Route path="/product/:productId" component={Product}/>
-                <PrivateRoute path="/user/edit/:userId" component={EditProfile}/>
+                <PrivateRoute path="/seller/:shopId/:productId/edit" component={EditProduct}/>
                 <PrivateRoute path="/seller/shop/new" component={NewShop}/>
                 <PrivateRoute path="/seller/shops" component={MyShops}/>
                 <PrivateRoute path="/seller/shop/edit/:shipId" component={EditShop}/>
-                <PrivateRoute path="/seller/:shopId/:productId/edit" component={EditProduct}/>
             </Switch>
         </div>
     )

@@ -110,7 +110,7 @@ export default function NewProduct({match}) {
                     <span className={classes.filename}>
                         {values.image ? values.image.name : ''}
                     </span>
-                    <br>
+                    <br />
                     <TextField id="name" label="Name" className={classes.textField} value={values.name} onChange={handleChange('name')} margin="normal" />
                     <br/>
                     <TextField id="multiline-flexible" label="Description" multiline rows="2" value={values.description} onChange={handleChange('description')} className={classes.textField} margin="normal" />

@@ -27,6 +27,7 @@ const list = async (signal) => {
 }
 
 const read = async (params, credentials, signal) => {
+    
     try {
         let response = await fetch('/api/users/' + params.userId, {
             method: 'GET',
@@ -45,6 +46,9 @@ const read = async (params, credentials, signal) => {
 
 const update = async (params, credentials, user) => {
     try {
+
+        console.log("email= " + user.email)
+        console.log("credential= " + credentials.t)
         let response = await fetch('/api/users/' + params.userId, {
             method: 'PUT',
             headers: {
