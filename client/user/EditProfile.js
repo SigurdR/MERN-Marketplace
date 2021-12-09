@@ -54,7 +54,6 @@ export default function EditProfile({ match }) {
     error: ''
   })
   const jwt = auth.isAuthenticated()
-
   useEffect(() => {
     const abortController = new AbortController()
     const signal = abortController.signal
@@ -79,8 +78,9 @@ export default function EditProfile({ match }) {
       name: values.name || undefined,
       email: values.email || undefined,
       password: values.password || undefined,
-      seller: values.seller || undefined
+      seller: values.seller
     }
+
     update({
       userId: match.params.userId
     }, {
@@ -100,7 +100,7 @@ export default function EditProfile({ match }) {
   }
 
   const handleCheck = (event, checked) => {
-    setValues({...values, 'seller': checked})
+    setValues({...values, seller: checked})
   }
 
   if (values.redirectToProfile) {

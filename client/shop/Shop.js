@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 export default function Shop({match}) {
 
     const classes = useStyles()
-    const [shop, setShop] = useStates('')
+    const [shop, setShop] = useState('')
     const [products, setProducts] = useState([])
     const [error, setError] = useState('')
 

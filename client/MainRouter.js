@@ -34,7 +34,7 @@ const MainRouter = () => {
                 <PrivateRoute path="/seller/:shopId/:productId/edit" component={EditProduct}/>
                 <PrivateRoute path="/seller/shop/new" component={NewShop}/>
                 <PrivateRoute path="/seller/shops" component={MyShops}/>
-                <PrivateRoute path="/seller/shop/edit/:shipId" component={EditShop}/>
+                <PrivateRoute path="/seller/shop/edit/:shopId" component={EditShop}/>
             </Switch>
         </div>
     )

@@ -1,7 +1,7 @@
-import React, { userEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
-import CartContent from '@material-ui/core/CardContent'
+import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
@@ -132,7 +132,7 @@ export default function EditShop ({match}) {
                             <br/>
                             <Avatar src={logoUrl} className={classes.bigAvatar}/><br/>
                             <input accept="image/*" onChange={handleChange('image')} className={classes.input} id="icon-button-file" type="file" />
-                            <label htmlfor="icon-button-file">
+                            <label htmlFor="icon-button-file">
                                 <Button variant="contained" color="default" component="span">
                                     Change Logo
                                     <FileUpload />

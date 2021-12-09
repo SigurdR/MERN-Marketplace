@@ -5,13 +5,13 @@ import formidable from 'formidable'
 import fs from 'fs'
 import defaultImage from './../../client/assets/images/default.png'
 
-const create = (req, res, next) => {
+const create = (req, res) => {
     let form = new formidable.IncomingForm()
     form.keepExtensions = true
     form.parse(req, async(err, fields, files) => {
         if(err) {
-            res.status(400).json({
-                message: "Image could not be uploaded"
+            return res.status(400).json({
+                error: "Image could not be uploaded"
             })
         }
         let shop = new Shop(fields)
@@ -22,20 +22,13 @@ const create = (req, res, next) => {
         }
         try {
             let result = await shop.save()
-            res.status(200).json(result)
+            // res.status(200).json(result)
+            res.json(result)
         } catch (err) {
             return res.status(400).json({
                 error: errorHandler.getErrorMessage(err)
             })
         }
-        /* shop.save{(err, result) => {
-            if (err) {
-                return res.status(400).json ({
-                    error: errorHandler.getErrorMessage(err)
-                })
-            }
-            res.status(200).json(result)
-        }} */
     })
 }
 
@@ -84,7 +77,7 @@ const read = (req, res) => {
 }
 
 const isOwner = (req, res, next) => {
-    const isOwner = req.shoop && req.auth && req.shop.owner._id == req.auth._id
+    const isOwner = req.shop && req.auth && req.shop.owner._id == req.auth._id
     if (!isOwner) {
         return res.status('403').json({
             error: "User is not authorized"

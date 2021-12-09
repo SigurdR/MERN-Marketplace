@@ -55,7 +55,7 @@ export default function Shops(){
             }
         })
         return function cleanup() {
-            abortController.abourt()
+            abortController.abort()
         }
     }, [])
 
@@ -67,8 +67,7 @@ export default function Shops(){
                 </Typography>
                 <List dense>
                     {shops.map((shop, i) => {
-                        return 
-                            <Link to={"/shops/" + shop._id} key={i}>
+                        return <Link to={"/shops/" + shop._id} key={i}>
                             <Divider />
                             <ListItem button>
                                 <ListItemAvatar>
@@ -84,8 +83,7 @@ export default function Shops(){
                                 </div>
                             </ListItem>
                             <Divider />
-                            </Link>
-                        })}
+                            </Link>})}
                 </List>
             </Paper>
         </div>

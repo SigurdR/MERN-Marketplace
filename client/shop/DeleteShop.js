@@ -65,6 +65,6 @@ export default function DeleteShop(props) {
 }
 
 DeleteShop.propTypes = {
-    shop: PropTypes.object.isRequiredd,
+    shop: PropTypes.object.isRequired,
     onRemove: PropTypes.func.isRequired
 }

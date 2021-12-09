@@ -58,7 +58,7 @@ export default function NewShop() {
     const jwt = auth.isAuthenticated()
 
     const handleChange = name => event => {
-        const value = name === "image"
+        const value = name === 'image'
             ? event.target.files[0]
             : event.target.value
         setValues({...values, [name]: value})
@@ -69,7 +69,7 @@ export default function NewShop() {
         values.name && shopData.append('name', values.name)
         values.description && shopData.append('description', values.description)
         values.image && shopData.append('image', values.image)
-        
+
         create({
             userId: jwt.user._id
         }, {
@@ -88,57 +88,40 @@ export default function NewShop() {
     }
 
     return (<div>
-    
-        <Card className={classes.card}>
-            <CardContent>
-                <Typography type="headline" component="h2" className={classes.title}>
-                    New Shop
-                </Typography>
-                <br />
-
-                <input accept="image/*" onChange={handleChange('image')}
-                    className={classes.input}
-                    id="icon-button-file"
-                    type="file"  />
-                <label htmlFor="icon-button-file">
-                    <Button variant="contained" color="secondary" component="span">
-                        Upload Logo <FileUpload />
-                    </Button>
-                </label>
-                <span className={classes.filename}>{values.image ? values.image.name : ''}</span><br/>
-                <TextField 
-                    id="name" 
-                    label="Name" 
-                    className={classes.textField} 
-                    value={values.name} 
-                    onChange={handleChange('name')}
-                    margin="normal"
-                />
-                <br/>
-                <TextField 
-                    id="multiline-flexible"
-                    label="Description"
-                    multiline
-                    rows="2"
-                    value={values.description}
-                    onChange={handleChange('description')}
-                    className={classes.textFiled}
-                    margin="normal"
-                />
-                <br/>
-                {values.error && (
-                    <Typography component="p" color="error"> 
-                        <Icon color="error" className={classes.error}>error</Icon>
-                        {values.error}
-                    </Typography>
-                )}
-            </CardContent>
-            <CardActions>
-                <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
-                <Link to='/seller/shops' className={classes.submit}><Button variant="contained">Cancel</Button></Link>
-                
-            </CardActions>
-        </Card>
+      <Card className={classes.card}>
+        <CardContent>
+          <Typography type="headline" component="h2" className={classes.title}>
+            New Shop
+          </Typography>
+          <br/>
+          <input accept="image/*" onChange={handleChange('image')} className={classes.input} id="icon-button-file" type="file" />
+          <label htmlFor="icon-button-file">
+            <Button variant="contained" color="secondary" component="span">
+              Upload Logo
+              <FileUpload/>
+            </Button>
+          </label> <span className={classes.filename}>{values.image ? values.image.name : ''}</span><br/>
+          <TextField id="name" label="Name" className={classes.textField} value={values.name} onChange={handleChange('name')} margin="normal"/><br/>
+          <TextField
+            id="multiline-flexible"
+            label="Description"
+            multiline
+            rows="2"
+            value={values.description}
+            onChange={handleChange('description')}
+            className={classes.textField}
+            margin="normal"
+          /><br/> {
+            values.error && (<Typography component="p" color="error">
+              <Icon color="error" className={classes.error}>error</Icon>
+              {values.error}</Typography>)
+          }
+        </CardContent>
+        <CardActions>
+          <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
+          <Link to='/seller/shops' className={classes.submit}><Button variant="contained">Cancel</Button></Link>
+        </CardActions>
+      </Card>
     </div>)
 }
 

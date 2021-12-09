@@ -1,15 +1,17 @@
-const create = (params, credentials, shop) => {
-    return fetch('/api/shops/by/' + params.userId, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ' + credentials.t
-        },
-        body: shop
-    })
-    .then ((response) => {
+const create = async (params, credentials, shop) => {
+    try {
+        let response = await fetch('/api/shops/by/' + params.userId, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + credentials.t
+            },
+            body: shop
+        })
         return response.json()
-    }).catch((err) => console.log(err))
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 const list = async (signal) => {
@@ -74,7 +76,7 @@ const remove = async (params, credentials) => {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
-                'Content Type': 'application/json',
+                'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + credentials.t
             }
         })
